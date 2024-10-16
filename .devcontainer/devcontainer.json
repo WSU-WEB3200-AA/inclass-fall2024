@@ -1,0 +1,23 @@
+{
+  "name": "Ruby/RoR Workspace",
+  "image": "ghcr.io/rails/devcontainer/images/ruby:3.3.5",
+  "onCreateCommand": "echo 'gem: --no-document' >> ~/.gemrc && sudo apt update && sudo apt -y install sqlite3 && curl -fsSL https://bun.sh/install | bash && gem install rails foreman",
+  "postCreateCommand": "ruby -v && rails -v",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "emmet.includeLanguages": {
+          "erb": "html"
+        },
+        "files.autoSave": "afterDelay",
+        "editor.detectIndentation": false,
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": true,
+        "editor.wordWrap": "on",
+        "editor.defaultFormatter": "Shopify.ruby-lsp"
+      },
+      "extensions": []
+    }
+  }
+}

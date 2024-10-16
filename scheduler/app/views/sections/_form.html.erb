@@ -1,0 +1,30 @@
+
+<%= simple_form_for(@section) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <div class="three-cols">
+      <%= f.association :semester %>
+      <%= f.association :course %>
+      <%= f.association :instructor, collection: Instructor.all.map{|i| [i.display_name, i.id] } %>
+    </div>
+    <div class="three-cols">
+      <%= f.input :days, collection: ['M', 'T', 'W', 'R', 'F', 'MW', 'TR', 'MWF']%>
+      <%= f.input :hours, collection: ['09-00 - 10:15', '09:30 - 10:30'] %>
+      <%= f.input :room, collection: ['NB 316', 'EH 318', 'NB 234']%>
+    </div>
+
+    <div class="three-cols">
+      <%= f.input :modality, collection: ['FTF', 'ONL', 'HYB'] %>
+      <%= f.input :active %>
+
+      <div class="form-actions">
+        <%= f.button :submit, class: "btn btn-primary" %>
+      </div>
+    </div>
+
+  </div>
+
+
+<% end %>

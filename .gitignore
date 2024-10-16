@@ -1,0 +1,53 @@
+# System Files
+.DS_Store
+Thumbs.db
+
+# IDE/tools
+.gradle
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.idea
+.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+logs
+*.log
+build/*
+cmake-build-debug
+.vs
+*.out
+out
+
+# Ruby/Rails specifics
+
+# Ignore bundler config.
+
+.bundle
+
+# Ignore all environment files (except templates).
+/.env*
+!/.env*.erb
+
+# Ignore all logfiles and tempfiles.
+log
+tmp
+
+# Ignore storage (uploaded files in development and any SQLite databases).
+storage
+
+public/assets
+
+# Ignore master key for decrypting credentials and more.
+config/master.key
+
+ruby-lsp
+
+node_modules

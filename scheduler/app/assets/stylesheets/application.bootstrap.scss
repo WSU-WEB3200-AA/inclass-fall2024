@@ -1,0 +1,12 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+
+.three-cols {
+  display: flex;
+
+  & div {
+    flex: 1;
+    margin: 0 .5rem;
+  }
+}

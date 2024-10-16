@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Semesters" %>
+
+<h1>Semesters</h1>
+
+<ul id="semesters">
+  <% @semesters.each do |semester| %>
+    
+    <li>
+      <%= semester.name %>
+      <%= link_to "Edit", edit_semester_path(semester), class: "btn btn-primary" %>
+      <%= link_to "Delete", semester, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+          class: "btn btn-danger"
+      %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New semester", new_semester_path %>
