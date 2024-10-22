@@ -24,7 +24,7 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
 
     if @course.save
-      redirect_to @course, notice: "Course was successfully created."
+      redirect_to courses_url, notice: "Course was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1
   def update
     if @course.update(course_params)
-      redirect_to @course, notice: "Course was successfully updated.", status: :see_other
+      redirect_to courses_url, notice: "Course was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end

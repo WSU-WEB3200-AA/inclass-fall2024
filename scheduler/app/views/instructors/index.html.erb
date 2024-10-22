@@ -2,15 +2,33 @@
 
 <% content_for :title, "Instructors" %>
 
+<%= link_to "New course", new_instructor_path, class: "btn btn-primary float-end" %>
 <h1>Instructors</h1>
 
-<div id="instructors">
-  <% @instructors.each do |instructor| %>
-    <%= render instructor %>
-    <p>
-      <%= link_to "Show this instructor", instructor %>
-    </p>
+<table id="courses" class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>WNO</th>
+      <th>Full Name</th>
+      <th>Title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @instructors.each_with_index do |instructor, i| %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= instructor.wno%></td>
+      <td><%= instructor.display_name%></td>
+      <td><%= instructor.title %></td>
+      <td>
+        <%= link_to "Edit", edit_instructor_path(instructor), class: "btn btn-primary" %> 
+       <%= link_to "Delete", instructor, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+          class: "btn btn-danger"
+      %>
+      </td>
+    </tr>
   <% end %>
-</div>
-
-<%= link_to "New instructor", new_instructor_path %>
+  </tbody>
+</table>

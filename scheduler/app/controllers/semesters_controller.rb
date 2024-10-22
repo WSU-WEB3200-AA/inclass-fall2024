@@ -1,5 +1,5 @@
 class SemestersController < ApplicationController
-  before_action :set_semester, only: %i[ show edit update destroy ]
+  before_action :set_semester, only: %i[ show edit update destroy schedule ]
 
   # GET /semesters
   def index
@@ -19,6 +19,11 @@ class SemestersController < ApplicationController
   def edit
   end
 
+  # GET /semesters/1/schedule
+
+  def schedule
+
+  end
   # POST /semesters
   def create
     @semester = Semester.new(semester_params)
