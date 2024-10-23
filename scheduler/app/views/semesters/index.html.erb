@@ -4,14 +4,14 @@
 
 <h1>Semesters</h1>
 
-<% @semesters.each do |semester| %>
-  <div class="d-flex">
-    <span class="flex-grow-1"><%= semester.name %></span>
-    <%= link_to "Edit", edit_semester_path(semester), class: "btn btn-primary" %>
-    <%= link_to "Delete", semester, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-        class: "btn btn-danger"
-    %>
-  </div>
+<%= turbo_frame_tag "new_semester" do %>
+  <%= link_to "New semester", new_semester_path, class: "btn btn-primary" %>
 <% end %>
 
-<%= link_to "New semester", new_semester_path %>
+<%= turbo_frame_tag "semesters" do %>
+  <% @semesters.each do |semester| %>
+    <%= render semester %>
+  <% end %>
+<% end %>
+
+

@@ -28,10 +28,15 @@ class SemestersController < ApplicationController
   def create
     @semester = Semester.new(semester_params)
 
-    if @semester.save
-      redirect_to @semester, notice: "Semester was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @semester.save
+        format.html {
+          redirect_to @semester, notice: "Semester was successfully created."
+        }
+        format.turbo_stream
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
@@ -47,7 +52,12 @@ class SemestersController < ApplicationController
   # DELETE /semesters/1
   def destroy
     @semester.destroy!
-    redirect_to semesters_url, notice: "Semester was successfully destroyed.", status: :see_other
+
+    respond_to do |format|
+      format.html {
+        redirect_to semesters_url, notice: "Semester was successfully destroyed.", status: :see_other}
+      format.turbo_stream
+    end
   end
 
   private
