@@ -2,35 +2,18 @@
 
 <% content_for :title, "Courses" %>
 
-<%= link_to "New course", new_course_path, class: "btn btn-primary float-end" %>
+<%= turbo_frame_tag :new_course do %>
+  <%= link_to "New course", new_course_path, class: "btn btn-primary float-end" %>
+<% end %>
+
 <h1>Courses</h1>
 
-<table id="courses" class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Credits</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @courses.each_with_index do |course, i| %>
-    <tr>
-      <td><%= i + 1 %></td>
-      <td><%= course.display_name%></td>
-      <td><%= course.description%></td>
-      <td><%= course.credits %></td>
-      <td>
-        <%= link_to "Edit", edit_course_path(course), class: "btn btn-primary" %> 
-       <%= link_to "Delete", course, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-          class: "btn btn-danger"
-      %>
-      </td>
-    </tr>
+<%= turbo_frame_tag :courses do %>
+  <% @courses.each_with_index do |course, i| %>
+    <%= turbo_frame_tag course do %>
+      <%= render course %>
+    <% end %>
   <% end %>
-  </tbody>
-</table>
+<% end %>
 
 

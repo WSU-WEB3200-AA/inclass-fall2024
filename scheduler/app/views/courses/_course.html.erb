@@ -1,22 +1,29 @@
-<div id="<%= dom_id course %>">
-  <p>
+<%= turbo_frame_tag course do %>
+<div class="d-flex bg-light rounded-2 border border-primary-subtle p-3 my-3">
+  <p class="d-flex flex-column px-4">
     <strong>Name:</strong>
     <%= course.name %>
   </p>
 
-  <p>
+  <p class="d-flex flex-column px-4">
     <strong>Title:</strong>
     <%= course.title %>
   </p>
 
-  <p>
+  <p class="d-flex flex-column px-4">
     <strong>Description:</strong>
     <%= course.description %>
   </p>
 
-  <p>
+  <p class="d-flex flex-column px-4 flex-grow-1">
     <strong>Credits:</strong>
     <%= course.credits %>
   </p>
-
+ <div>
+    <%= link_to "Edit", edit_course_path(course), class: "btn btn-primary" %>
+    <%= link_to "Delete", course, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+        class: "btn btn-danger"
+    %>
+ </div>
 </div>
+<% end %>

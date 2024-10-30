@@ -1,0 +1,7 @@
+<%= turbo_stream.append "semesters"  do %>
+  <%= render @semester %>
+<% end %>
+
+<%= turbo_stream.update "new_semester" do %>
+  <%= link_to "New semester", new_semester_path, class: "btn btn-primary" %>
+<% end %>

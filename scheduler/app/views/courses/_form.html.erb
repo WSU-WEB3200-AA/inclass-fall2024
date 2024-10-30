@@ -1,16 +1,23 @@
+<%= turbo_frame_tag @course do %>
+  <div class="bg-light rounded-4 border border-secondary-subtle p-3 m-3">
+    <%= simple_form_for(@course) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<%= simple_form_for(@course) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <div class="form-inputs d-flex">
+        <%= f.input :name, wrapper_html: {class: "me-3 flex-grow-1"} %>
+        <%= f.input :title, wrapper_html: {class: "me-3 flex-grow-1"} %>
+        <%= f.input :credits, wrapper_html: {class: "me-3"} %>
+      </div>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :title %>
-    <%= f.input :description, as: :rich_text_area %>
-    <%= f.input :credits %>
-  </div>
+      <div class="form-inputs">
+         <%= f.input :description, as: :rich_text_area %>
+      </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+      <div class="form-actions">
+        <%= f.button :submit, class: "btn btn-primary" %>
+        <%= link_to "Cancel", courses_path, class: "btn btn-secondary" %>
+      </div>
+    <% end %>
   </div>
 <% end %>

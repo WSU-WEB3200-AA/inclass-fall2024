@@ -21,12 +21,17 @@ class CoursesController < ApplicationController
 
   # POST /courses
   def create
-    @course = Course.new(course_params)
+    @course = Semester.new(course_params)
 
-    if @course.save
-      redirect_to courses_url, notice: "Course was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @course.save
+        format.html {
+          redirect_to @course, notice: "Course was successfully created."
+        }
+        format.turbo_stream
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
@@ -42,7 +47,12 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   def destroy
     @course.destroy!
-    redirect_to courses_url, notice: "Course was successfully destroyed.", status: :see_other
+
+    respond_to do |format|
+      format.html {
+        redirect_to courses_url, notice: "Course was successfully destroyed.", status: :see_other}
+      format.turbo_stream
+    end
   end
 
   private
