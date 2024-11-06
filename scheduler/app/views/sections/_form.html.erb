@@ -5,7 +5,6 @@
 
   <div class="form-inputs">
     <div class="three-cols">
-      <%= f.association :semester %>
       <%= f.association :course %>
       <%= f.association :instructor, collection: Instructor.all.map{|i| [i.display_name, i.id] } %>
     </div>

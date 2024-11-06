@@ -22,6 +22,7 @@ class SectionsController < ApplicationController
   # POST /sections
   def create
     @section = Section.new(section_params)
+    @section.semester_id = session[:current_semester]
 
     if @section.save
       redirect_to @section, notice: "Section was successfully created."

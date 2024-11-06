@@ -1,9 +1,10 @@
 <%= turbo_frame_tag semester do%>
   <div class="d-flex">
     <span class="flex-grow-1"><%= semester.name %></span>
-    <%= link_to "Edit", edit_semester_path(semester), class: "btn btn-primary" %>
+    <%= link_to "Build", schedule_semester_path(semester), class: "btn btn-secondary m-1", data: {turbo_frame: :_top} %>
+    <%= link_to "Edit", edit_semester_path(semester), class: "btn btn-primary m-1" %>
     <%= link_to "Delete", semester, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-        class: "btn btn-danger"
+        class: "btn btn-danger m-1"
     %>
   </div>
 <% end %>

@@ -22,8 +22,9 @@ class SemestersController < ApplicationController
   # GET /semesters/1/schedule
 
   def schedule
-
+    session[:current_semester] = @semester.id
   end
+
   # POST /semesters
   def create
     @semester = Semester.new(semester_params)

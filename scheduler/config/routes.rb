@@ -6,9 +6,13 @@ Rails.application.routes.draw do
   resources :instructors
   resources :courses
 
+
   resources :semesters do
     get "schedule", on: :member
   end
+
+  get "/api/v1/semesters", to: "semesters#index", defaults: {format: :json}
+  get "/api/v1/semesters/:id", to: "semesters#show", defaults: {format: :json}
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
