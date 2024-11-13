@@ -36,6 +36,8 @@ gem "image_processing", "~> 1.2"
 
 gem 'simple_form'
 
+gem 'devise'
+
 gem 'jbuilder'
 
 group :development, :test do
